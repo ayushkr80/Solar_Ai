@@ -237,9 +237,9 @@
     Dust, leaves and bird droppings can cut the output of a photovoltaic (PV) plant by 5&ndash;30%, yet most plants still decide
     when to clean by fixed calendars or by sending people onto the arrays. This project builds the perception core of an autonomous
     alternative: a drone flies over the plant, a detector inspects every module in the RGB feed, and the detected condition drives the
-    cleaning decision. I merged four public solar-panel datasets into one benchmark of <b>20,153 curated images</b> covering
-    <b>six unified classes</b> (dust, defect, bird drop, clean, leaf, bird feather; snow removed as irrelevant for Indian
-    deployment sites), spent most of the effort on data hygiene &mdash;
+    cleaning decision. I merged four public solar-panel datasets into one benchmark &mdash; <b>18,783 curated images</b> covering
+    <b>six unified classes</b> (dust, defect, bird drop, clean, leaf, bird feather; the noisy snow class pruned entirely), and spent
+    most of the effort on data hygiene &mdash;
     cryptographic and perceptual deduplication, cross-split leakage repair and an AI-generated image audit &mdash; and trained an
     imbalance-aware <b>YOLOv11s</b> detector on the result. On held-out validation data the model reaches <b>73.1% mAP@50</b> and
     74.9% precision, with clean modules detected at 88.8% AP and dust at 78.2%. The class output is mapped to a <b>decision policy</b>:
@@ -290,7 +290,8 @@
         <tr><td>Solar Panel Detection v3</td><td class="r">6,570</td><td class="r">781</td><td class="r">5,754</td></tr>
         <tr><td>6rainstorm final project v1</td><td class="r">3,592</td><td class="r">1,646</td><td class="r">1,946</td></tr>
         <tr><td>Aerial soiling (Soiling_DS_v2_14)</td><td class="r">302</td><td class="r">40</td><td class="r">262</td></tr>
-        <tr><td><b>Total unified</b></td><td class="r"><b>24,257</b></td><td class="r"><b>4,104</b></td><td class="r"><b>20,153</b></td></tr>
+        <tr><td><b>Total unified (7-class audit)</b></td><td class="r"><b>24,257</b></td><td class="r"><b>4,104</b></td><td class="r"><b>20,153</b></td></tr>
+        <tr><td>Snow pruned &rarr; final 6-class benchmark</td><td class="r">&mdash;</td><td class="r">1,370</td><td class="r"><b>18,783</b></td></tr>
       </table>
 
       <table>
@@ -333,7 +334,7 @@
           <li><b>Perceptual deduplication:</b> 64-bit dhash/phash signatures flag near-identical frames (Hamming distance &le; 2); <b>281,429 near-duplicate pairs</b> identified.</li>
           <li><b>Cross-split leakage repair:</b> hash scan across train/valid/test; <b>2,122 leakage instances</b> canonicalised so validation and test stay genuinely unseen.</li>
           <li><b>AI-generated image audit:</b> a Vision Transformer [4] scored every image with P(AI); 8,123 flagged at P &ge; 0.85, 11,830 uncertain &mdash; all <b>retained with audit tags</b>, since real thermal and aerial panels trigger false flags.</li>
-          <li><b>Corrupted files:</b> 1,893 unreadable files excluded. Final benchmark: <b>20,153 images</b> (19,451 train / 383 val / 319 test).</li>
+          <li><b>Corrupted files:</b> 1,893 unreadable files excluded. After snow pruning, the final benchmark holds <b>18,783 images</b> (18,087 train / 380 val / 316 test).</li>
         </ul>
       </div>
 
@@ -349,8 +350,8 @@
       </div>
 
       <div class="stats">
-        <div class="stat"><div class="v">20,153</div><div class="l">curated images (from 24,257)</div></div>
-        <div class="stat"><div class="v">6</div><div class="l">unified classes (snow pruned)</div></div>
+        <div class="stat"><div class="v">18,783</div><div class="l">curated images (snow pruned)</div></div>
+        <div class="stat"><div class="v">6</div><div class="l">unified condition classes</div></div>
         <div class="stat"><div class="v">281,429</div><div class="l">near-duplicate pairs flagged</div></div>
         <div class="stat"><div class="v">2,122</div><div class="l">leakage instances repaired</div></div>
       </div>
@@ -447,15 +448,15 @@
       <div class="sec"><div class="num">7</div><h2>Limitations</h2></div>
       <ul class="tight">
         <li><b>Bird drop remains weak.</b> Very few validation examples and strong visual overlap with defect; targeted augmentation helped but did not close the gap.</li>
-        <li><b>Small validation split.</b> 383 images is thin for 6 classes; per-class confidence intervals are wide.</li>
+        <li><b>Small validation split.</b> 380 images is thin for 6 classes; per-class confidence intervals are wide.</li>
         <li><b>Adhered vs. loose dust is inferred</b> from appearance, not measured; deployment would add a wind/humidity check before choosing air over water.</li>
         <li><b>Aerial RGB only.</b> Cracks under glare are harder to see; thermal or electroluminescence channels would catch sub-visual defects.</li>
       </ul>
 
       <div class="sec"><div class="num">8</div><h2>Conclusion and Future Work</h2></div>
-      <p>Four inconsistent public datasets became one audited 20,153-image benchmark, and an imbalance-aware YOLOv11s trained on it
-      recognises the conditions that actually drive cleaning decisions &mdash; 73.1% mAP@50, with 88.8% AP on clean and 78.2% on
-      dust &mdash; wired to an action policy an autonomous UAV or cleaning robot can execute. Next steps:</p>
+      <p>Four inconsistent public datasets became one audited, snow-pruned 18,783-image benchmark, and an imbalance-aware YOLOv11s
+      trained on it recognises the conditions that actually drive cleaning decisions &mdash; 73.1% mAP@50, with 88.8% AP on clean and
+      78.2% on dust &mdash; wired to an action policy an autonomous UAV or cleaning robot can execute. Next steps:</p>
       <ul class="tight">
         <li><b>Better minority-class data:</b> targeted bird-drop collection; larger validation split;</li>
         <li><b>Loose-vs-adhered head:</b> a two-way classifier on the panel crop to make the air/water choice explicit;</li>
