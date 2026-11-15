@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI-Powered UAV-Based Solar Panel Inspection — Minor Project Poster</title>
+<style>
+  @page { size: 841mm 1189mm; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #ffffff; }
+
+  :root {
+    --green-deep: #17402c;
+    --green-head: #1d5236;
+    --green-tint: #e9f2ec;
+    --green-line: #b9d2c2;
+    --ink: #1d2521;
+    --grey: #55615a;
+    --amber: #b07818;
+    --blue: #1f5a86;
+    --red: #a03428;
+    --gold: #d9a441;
+  }
+
+  .poster {
+    width: 841mm;
+    height: 1189mm;
+    background: #ffffff;
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 21.5pt;
+    line-height: 1.34;
+    padding: 11mm 13mm 9mm 13mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- header ---------- */
+  .band {
+    background: linear-gradient(165deg, #21593b 0%, #17402c 55%, #123321 100%);
+    border-bottom: 1.6mm solid var(--gold);
+    border-radius: 5mm;
+    color: #ffffff;
+    text-align: center;
+    padding: 9mm 12mm 8mm 12mm;
+    display: flex;
+    align-items: center;
+    gap: 9mm;
+  }
+  .band .logo {
+    width: 48mm; height: 48mm; flex: 0 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1mm rgba(255,255,255,0.25);
+  }
+  .band .mid { flex: 1; }
+  .band h1 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 43pt;
+    line-height: 1.12;
+    letter-spacing: -0.3pt;
+  }
+  .band .author {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 22pt;
+    margin-top: 5mm;
+  }
+  .band .affil {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 17.5pt;
+    color: #d8e6dc;
+    margin-top: 2mm;
+  }
+
+  /* ---------- abstract ---------- */
+  .abstract {
+    background: var(--green-tint);
+    border-left: 3mm solid var(--green-head);
+    border-radius: 1.5mm;
+    padding: 6mm 8mm;
+    margin-top: 5mm;
+    text-align: justify;
+  }
+  .abstract .lbl {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18pt;
+    color: var(--green-head);
+    letter-spacing: 1.5pt;
+    margin-right: 3mm;
+  }
+
+  /* ---------- columns ---------- */
+  .cols { display: flex; gap: 10mm; margin-top: 5mm; flex: 1 1 auto; min-height: 0; }
+  .col { flex: 1; display: flex; flex-direction: column; }
+
+  /* ---------- section bars ---------- */
+  .sec {
+    display: flex; align-items: stretch;
+    background: var(--green-head);
+    border-radius: 2mm;
+    color: #fff;
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 5.5mm 0 3.5mm 0;
+  }
+  .sec:first-child { margin-top: 0; }
+  .sec .num {
+    background: var(--green-deep);
+    font-weight: 700; font-size: 24pt;
+    padding: 2mm 4.5mm;
+    border-radius: 2mm 0 0 2mm;
+    display: flex; align-items: center;
+  }
+  .sec h2 { font-size: 24pt; font-weight: 600; padding: 2mm 6mm; border-bottom: 0.9mm solid rgba(217,164,65,0.65); }
+  .sub h3 {
+    color: var(--green-head);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 700; font-size: 19.5pt;
+    margin: 3.5mm 0 1.5mm 0;
+  }
+
+  p { text-align: justify; margin-bottom: 2.5mm; }
+  b { color: #14231a; }
+
+  /* ---------- tables ---------- */
+  table { width: 100%; border-collapse: collapse; font-size: 17.5pt; margin: 2mm 0 1.5mm 0; }
+  caption {
+    text-align: left; font-size: 16.5pt; color: var(--grey);
+    margin-bottom: 1.4mm; line-height: 1.28;
+  }
+  caption b { color: var(--ink); }
+  th {
+    font-family: "Segoe UI", Arial, sans-serif; font-size: 16pt; font-weight: 600;
+    text-align: left; padding: 1.5mm 2mm;
+    border-top: 0.8mm solid var(--ink); border-bottom: 0.4mm solid var(--ink);
+  }
+  td { padding: 1.2mm 2mm; vertical-align: top; border-bottom: 0.15mm solid #cfd8d1; }
+  tr.hl td { background: var(--green-tint); font-weight: 700; }
+  tr:last-child td { border-bottom: 0.8mm solid var(--ink); }
+  .r { text-align: right; }
+  .c { text-align: center; }
+
+  /* ---------- figures ---------- */
+  figure { margin: 2.5mm 0 1mm 0; }
+  figcaption {
+    font-size: 16.5pt; color: var(--grey); line-height: 1.28; margin-top: 1.4mm;
+  }
+  figcaption b { color: var(--ink); }
+  .imgbox {
+    border: 0.25mm solid #cfd8d1; border-radius: 2mm; overflow: hidden;
+    background: #fff;
+  }
+  .imgbox img { display: block; width: 100%; }
+      .fig-shrink { width: 83%; margin-left: auto; margin-right: auto; }
+
+  /* ---------- flow diagram ---------- */
+  .flow { display: flex; align-items: stretch; gap: 0; margin: 2.5mm 0 1mm 0; }
+  .fstep {
+    flex: 1; border: 0.5mm solid var(--green-line); border-radius: 2.2mm;
+    padding: 3mm 2mm; text-align: center;
+    display: flex; flex-direction: column; justify-content: center;
+    background: #fff;
+  }
+  .fstep.ours { background: var(--green-tint); border-color: var(--green-head); }
+  .fstep.input { background: #e8eef5; border-color: #7d95ad; }
+  .fstep.decision { background: #f9ecd9; border-color: #c08a2d; }
+  .fstep .t { font-family: "Segoe UI", Arial, sans-serif; font-weight: 700; font-size: 17pt; color: #14231a; }
+  .fstep .d { font-size: 14pt; color: var(--grey); margin-top: 1mm; line-height: 1.22; }
+  .farrow {
+    align-self: center; font-size: 20pt; color: var(--green-head);
+    padding: 0 1.4mm; font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  /* ---------- action cards ---------- */
+  .actions { display: flex; gap: 4mm; margin: 2.5mm 0 1mm 0; }
+  .card {
+    flex: 1; border-radius: 2.5mm; padding: 3mm 3mm 2.5mm 3mm; color: #fff;
+    display: flex; flex-direction: column;
+    border-top: 1.2mm solid rgba(0,0,0,0.22);
+  }
+  .card .k { font-family: "Segoe UI", Arial, sans-serif; font-weight: 700; font-size: 22pt; }
+  .card .w { font-family: "Segoe UI", Arial, sans-serif; font-weight: 600; font-size: 15pt; margin-top: 0.8mm; }
+  .card .m { font-size: 13.5pt; margin-top: 1.4mm; line-height: 1.24; color: #f3f7f4; }
+  .card.noact { background: #2e6b45; }
+  .card.air   { background: var(--amber); }
+  .card.water { background: var(--blue); }
+  .card.repair{ background: var(--red); }
+
+  /* ---------- stat callouts ---------- */
+  .stats { display: flex; gap: 4mm; margin: 2.5mm 0 1.5mm 0; }
+  .stat {
+    flex: 1; border-top: 1.1mm solid var(--green-head);
+    border-bottom: 0.15mm solid #cfd8d1;
+    padding: 1.5mm 1mm 2mm 1mm; text-align: center;
+  }
+  .stat .v { font-family: Georgia, serif; font-weight: 700; font-size: 35pt; color: var(--green-deep); }
+  .stat .l { font-size: 15pt; color: var(--grey); margin-top: 0.8mm; line-height: 1.22; }
+
+  ul.tight { margin: 1mm 0 2.5mm 6.5mm; }
+  ul.tight li { margin-bottom: 1.4mm; }
+
+  /* ---------- references & footer ---------- */
+  .refs p { font-size: 13pt; text-align: left; margin-bottom: 0.8mm; padding-left: 9mm; text-indent: -9mm; }
+  .footer {
+    background: var(--green-deep); color: #e5efe8;
+    border-radius: 3mm; text-align: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 17pt; padding: 3.5mm 6mm; margin-top: 3.5mm;
+    display: flex; align-items: center;
+  }
+  .footer b { color: #ffffff; }
+  .footer .mid { flex: 1; }
+  .fqr { width: 26mm; height: 26mm; background: #fff; border-radius: 1.5mm; padding: 1.2mm; flex: 0 0 auto; }
+  .fqr img { width: 100%; height: 100%; display: block; }
+  .fqrwrap { display: flex; flex-direction: column; align-items: center; gap: 1.2mm; width: 34mm; }
+  .fqrlabel { font-size: 11.5pt; color: #d8e6dc; text-align: center; line-height: 1.2; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ===================== HEADER ===================== -->
+  <div class="band">
+    <img class="logo" src="poster_assets/iitbhilai_logo.png" alt="IIT Bhilai">
+    <div class="mid">
+      <h1>AI-Powered UAV-Based Solar Panel Inspection and Intelligent Soiling Detection for Automated Cleaning</h1>
+      <div class="author">Ayush Kumar &nbsp;&middot;&nbsp; ID 12340440 &nbsp;&middot;&nbsp; B.Tech. Electrical Engineering, 4th Year</div>
+      <div class="affil">Supervisor: Avishek Adhikary &nbsp;&middot;&nbsp; Department of Electrical Engineering, Indian Institute of Technology Bhilai</div>
+    </div>
+    <img class="logo" src="poster_assets/iitbhilai_logo.png" alt="IIT Bhilai">
+  </div>
+
+  <!-- ===================== ABSTRACT ===================== -->
+  <div class="abstract">
+    <span class="lbl">ABSTRACT</span>
+    Dust, leaves and bird droppings can cut the output of a photovoltaic (PV) plant by 5&ndash;30%, yet most plants still decide
+    when to clean by fixed calendars or by sending people onto the arrays. This project builds the perception core of an autonomous
+    alternative: a drone flies over the plant, a detector inspects every module in the RGB feed, and the detected condition drives the
+    cleaning decision. I merged four public solar-panel datasets into one benchmark of <b>20,153 curated images</b> covering
+    <b>six unified classes</b> (dust, defect, bird drop, clean, leaf, bird feather; snow removed as irrelevant for Indian
+    deployment sites), spent most of the effort on data hygiene &mdash;
+    cryptographic and perceptual deduplication, cross-split leakage repair and an AI-generated image audit &mdash; and trained an
+    imbalance-aware <b>YOLOv11s</b> detector on the result. On held-out validation data the model reaches <b>73.1% mAP@50</b> and
+    74.9% precision, with clean modules detected at 88.8% AP and dust at 78.2%. The class output is mapped to a <b>decision policy</b>:
+    no action when clean, air-blowing for loose dust and organic debris, water-based washing only when contamination is adhered,
+    and a maintenance alert for physical defects.
+  </div>
+
+  <!-- ===================== COLUMNS ===================== -->
+  <div class="cols">
+
+    <!-- ============ LEFT COLUMN ============ -->
+    <div class="col">
+
+      <div class="sec"><div class="num">1</div><h2>Introduction</h2></div>
+      <p>Soiling is one of the largest controllable losses in photovoltaic plants. A dust layer attenuates incident irradiance before
+      it reaches the cell, and bird droppings or leaves create hard, localised shading that can drive hot spots and permanent damage.
+      The usual responses &mdash; fixed cleaning schedules, or crews walking the arrays &mdash; are wasteful in dry weather and too slow
+      after a dust storm, and on large plants cleaning labour dominates the O&amp;M budget.</p>
+      <p>The idea of this project is that the drone should decide, not the calendar: an UAV inspects the plant photographically, a
+      detector recognises what is actually on each module, and a rule layer picks the cheapest effective response &mdash; <b>do nothing</b>,
+      <b>blow it off with air</b>, or <b>wash with water</b>. Cracks and hotspots are not a cleaning problem at all, so they are routed to
+      maintenance instead. Contributions:</p>
+      <ul class="tight">
+        <li>A <b>unified 7-class benchmark</b> (merged_dataset_v3) built from four heterogeneous public datasets, with a documented cleaning and auditing pipeline.</li>
+        <li>An <b>imbalance-aware YOLOv11s detector</b> (640&times;640) with class-weighted loss, label smoothing and copy-paste augmentation for rare defects.</li>
+        <li>A <b>decision policy</b> connecting each detected condition to a concrete cleaning action.</li>
+      </ul>
+
+      <div class="sec"><div class="num">2</div><h2>Related Work</h2></div>
+      <p><b>Soiling losses.</b> Field studies report average soiling losses of 3&ndash;4% in temperate climates but far higher during
+      dust-storm seasons in arid regions, with short-term losses exceeding 15% [1]. Because the loss profile is weather-driven,
+      scheduling washes from fixed intervals systematically mistimes them.</p>
+      <p><b>Vision-based inspection.</b> Single-stage YOLO detectors [2, 3] are the standard choice for UAV inspection because
+      inference is fast enough for onboard deployment. Published solar datasets, however, each use their own small label space,
+      and several contain heavy duplication from drone video stills and web-scraped images. This project therefore treats dataset
+      construction as a first-class problem: merging, deduplicating, de-leaking and auditing before any training run.</p>
+
+      <div class="sec"><div class="num">3</div><h2>Datasets</h2></div>
+      <p>Four public datasets were merged into one benchmark, <b>merged_dataset_v3</b>. The pool started at 24,257 discovered images;
+      every image passed through the audit pipeline of Section 4. The label spaces were consolidated into <b>six classes</b>: the
+      snow class was pruned &mdash; not relevant for Indian deployment sites &mdash; and all label indices re-mapped
+      (<i>preprocessing/remove_snow.py</i>).</p>
+
+      <table>
+        <caption><b>Table 1.</b> Source datasets and what survived the audit pipeline (Section 4).</caption>
+        <tr><th>Source dataset</th><th class="r">Initial</th><th class="r">Removed</th><th class="r">Retained</th></tr>
+        <tr><td>Solar-Panel-Dust-Detection v2</td><td class="r">13,793</td><td class="r">1,674</td><td class="r">12,191</td></tr>
+        <tr><td>Solar Panel Detection v3</td><td class="r">6,570</td><td class="r">781</td><td class="r">5,754</td></tr>
+        <tr><td>6rainstorm final project v1</td><td class="r">3,592</td><td class="r">1,646</td><td class="r">1,946</td></tr>
+        <tr><td>Aerial soiling (Soiling_DS_v2_14)</td><td class="r">302</td><td class="r">40</td><td class="r">262</td></tr>
+        <tr><td><b>Total unified</b></td><td class="r"><b>24,257</b></td><td class="r"><b>4,104</b></td><td class="r"><b>20,153</b></td></tr>
+      </table>
+
+      <table>
+        <caption><b>Table 2.</b> Unified 6-class label space, consolidated from the four source label sets.</caption>
+        <tr><th>Class</th><th>Appearance on the module</th></tr>
+        <tr><td><b>dust</b></td><td>Uniform particulate layer attenuating irradiance</td></tr>
+        <tr><td><b>defect</b></td><td>Cracks, hotspots, discolouration, delamination</td></tr>
+        <tr><td><b>bird drop</b></td><td>Concentrated deposits, localised shading</td></tr>
+        <tr><td><b>clean</b></td><td>Uncontaminated surface (baseline)</td></tr>
+        <tr><td><b>leaf</b></td><td>Foliage and vegetation debris</td></tr>
+        <tr><td><b>bird feather</b></td><td>Fine organic material on the glass</td></tr>
+      </table>
+
+      <div class="sec"><div class="num">4</div><h2>Proposed Method</h2></div>
+
+      <figure>
+        <div class="flow">
+          <div class="fstep input"><div class="t">Drone RGB image</div><div class="d">UAV flyover, any lighting</div></div>
+          <div class="farrow">&#9654;</div>
+          <div class="fstep ours"><div class="t">Detect solar panel</div><div class="d">YOLOv11s localisation</div></div>
+          <div class="farrow">&#9654;</div>
+          <div class="fstep"><div class="t">Crop panel</div><div class="d">per-module region</div></div>
+          <div class="farrow">&#9654;</div>
+          <div class="fstep ours"><div class="t">Detect condition</div><div class="d">soiling, defect, leaf, birds &mdash; 6 classes + confidence</div></div>
+          <div class="farrow">&#9654;</div>
+          <div class="fstep decision"><div class="t">Decision</div><div class="d">cleaning policy, Section 5</div></div>
+        </div>
+        <figcaption><b>Figure 1.</b> Proposed pipeline. Each panel is localised, cropped and classified into one of six
+        condition classes &mdash; soiling, defects and cleanliness in one pass; the decision layer maps class and confidence to a
+        cleaning action (Section 5). Green blocks are the trained detector.</figcaption>
+      </figure>
+
+      <div class="sub">
+        <h3>4.1&nbsp;&nbsp;Building a dataset worth training on</h3>
+        <p>Most of this project was data work, deliberately so. The merged pool contained unreadable files, byte-identical copies from
+        drone video stills, and &mdash; the most dangerous case &mdash; the same scene in both train and test splits, which silently
+        inflates accuracy.</p>
+        <ul class="tight">
+          <li><b>Exact deduplication:</b> SHA-256/MD5 digests prune identical files &mdash; <b>126 duplicates</b> removed.</li>
+          <li><b>Perceptual deduplication:</b> 64-bit dhash/phash signatures flag near-identical frames (Hamming distance &le; 2); <b>281,429 near-duplicate pairs</b> identified.</li>
+          <li><b>Cross-split leakage repair:</b> hash scan across train/valid/test; <b>2,122 leakage instances</b> canonicalised so validation and test stay genuinely unseen.</li>
+          <li><b>AI-generated image audit:</b> a Vision Transformer [4] scored every image with P(AI); 8,123 flagged at P &ge; 0.85, 11,830 uncertain &mdash; all <b>retained with audit tags</b>, since real thermal and aerial panels trigger false flags.</li>
+          <li><b>Corrupted files:</b> 1,893 unreadable files excluded. Final benchmark: <b>20,153 images</b> (19,451 train / 383 val / 319 test).</li>
+        </ul>
+      </div>
+
+      <div class="sub">
+        <h3>4.2&nbsp;&nbsp;Imbalance-aware training</h3>
+        <p>The merged data is heavily skewed &mdash; dust and clean dominate, defects and feathers are rare. YOLOv11s [3] was trained
+        with explicit countermeasures:</p>
+        <ul class="tight">
+          <li>Classification loss gain raised to <b>2.0</b>; <b>label smoothing 0.05</b> against overconfidence on dust;</li>
+          <li><b>Copy-paste augmentation 0.3</b> for rare instances (defects, feathers); mosaic off for the last 10 epochs;</li>
+          <li>SGD, lr 0.01 (3-epoch warmup), momentum 0.937, weight decay 0.0005; 50 epochs, batch 16, 640&times;640.</li>
+        </ul>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="v">20,153</div><div class="l">curated images (from 24,257)</div></div>
+        <div class="stat"><div class="v">6</div><div class="l">unified classes (snow pruned)</div></div>
+        <div class="stat"><div class="v">281,429</div><div class="l">near-duplicate pairs flagged</div></div>
+        <div class="stat"><div class="v">2,122</div><div class="l">leakage instances repaired</div></div>
+      </div>
+
+      <div class="sec"><div class="num">5</div><h2>From Detection to a Cleaning Decision</h2></div>
+      <p>The detector's output only matters if it changes what the system does. Each detection carries a class, a confidence and a
+      GPS tag from the drone's pose estimate, so the plan is issued per panel, not per plant; a rule layer maps it to one of four
+      actions. Water &mdash; the costliest resource &mdash; is spent only when contamination is adhered to the glass.</p>
+
+      <div class="actions">
+        <div class="card noact">
+          <div class="k">NO ACTION</div>
+          <div class="w">clean</div>
+          <div class="m">Log as healthy; revisit next cycle. No resource spent.</div>
+        </div>
+        <div class="card air">
+          <div class="k">AIR-BLOW</div>
+          <div class="w">loose dust &middot; leaf &middot; feather</div>
+          <div class="m">Dry, waterless removal of loose particulates and debris.</div>
+        </div>
+        <div class="card water">
+          <div class="k">WATER WASH</div>
+          <div class="w">adhered dust &middot; bird drop</div>
+          <div class="m">Water only when contamination sticks to the glass, where air alone will not remove it.</div>
+        </div>
+        <div class="card repair">
+          <div class="k">ALERT</div>
+          <div class="w">defect / crack</div>
+          <div class="m">Not cleaning. Route to maintenance with panel GPS tag.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ RIGHT COLUMN ============ -->
+    <div class="col">
+
+      <div class="sec"><div class="num">6</div><h2>Results and Evaluation</h2></div>
+
+      <table>
+        <caption><b>Table 3.</b> Detection performance on the held-out validation split (6-class model, snow removed).</caption>
+        <tr><th>Metric</th><th class="r">Value</th></tr>
+        <tr class="hl"><td>mAP@50</td><td class="r"><b>73.13%</b></td></tr>
+        <tr class="hl"><td>mAP@50&ndash;95</td><td class="r"><b>41.57%</b></td></tr>
+        <tr><td>Precision</td><td class="r">74.92%</td></tr>
+        <tr><td>Recall</td><td class="r">71.45%</td></tr>
+      </table>
+
+      <p>Per-class behaviour (Figure 2) is the most informative result. The classes that drive the cleaning decision are learned
+      well: <b>clean 0.84</b>, <b>dust 0.77</b>, <b>leaf 0.82</b> and <b>bird feather 1.00</b> normalised accuracy, with per-class
+      mAP@50 of <b>88.8%</b> (clean), <b>82.8%</b> (leaf), <b>78.2%</b> (dust) and <b>99.5%</b> (feather). One class lags:
+      <b>bird drop</b> (0.42) is confused with defect &mdash; both appear as dark high-contrast blobs &mdash; and many bird-drop
+      boxes are simply missed (background row, Figure 2). The detector was
+      additionally exercised on <b>field footage I collected myself</b> at a rooftop array (Figure 4) &mdash; real-time frames
+      with uneven dust and glare, exactly the input a UAV would see.</p>
+
+      <table>
+        <caption><b>Table 4.</b> Per-class mAP@50 (validation) and the action each class drives in the cleaning policy.</caption>
+        <tr><th>Class</th><th class="c">mAP@50</th><th>Action triggered</th></tr>
+        <tr><td>bird feather</td><td class="c"><b>99.5%</b></td><td>Air-blow</td></tr>
+        <tr><td>clean</td><td class="c"><b>88.8%</b></td><td>No action &mdash; module skipped</td></tr>
+        <tr><td>leaf</td><td class="c"><b>82.8%</b></td><td>Air-blow</td></tr>
+        <tr><td>dust</td><td class="c"><b>78.2%</b></td><td>Air-blow (loose) / water (adhered)</td></tr>
+        <tr><td>defect</td><td class="c">59.4%</td><td>Maintenance alert, no cleaning</td></tr>
+        <tr><td>bird drop</td><td class="c">30.1%</td><td>Water wash</td></tr>
+      </table>
+      <p style="margin-top:-1mm;">Every class the <b>decision layer depends on</b> sits at 78% AP or above; defect routes to
+      maintenance rather than cleaning, and bird drop remains the main target for future data collection.</p>
+
+      <figure class="fig-shrink">
+        <div class="imgbox"><img src="poster_assets/confusion_matrix_normalized.png" alt="Confusion matrix"></div>
+        <figcaption><b>Figure 2.</b> Normalised confusion matrix on the validation split (6-class model). The decision-critical
+        classes (clean, dust, leaf) separate reliably; bird drop is confused with defect and often missed entirely.</figcaption>
+      </figure>
+
+      <figure>
+        <div style="display:flex; gap:4mm; align-items:flex-start;">
+          <div class="imgbox" style="flex:1.15;"><img src="poster_assets/BoxPR_curve.png" alt="PR curve"></div>
+          <div class="imgbox" style="flex:1;"><img src="poster_assets/field_1.jpg" alt="Field frame 1"></div>
+          <div class="imgbox" style="flex:1;"><img src="poster_assets/field_2.jpg" alt="Field frame 2"></div>
+        </div>
+        <div style="display:flex; gap:6mm; margin-top:2mm; align-items:flex-start;">
+          <div style="flex:1.15; font-size:16.5pt; color:var(--grey); line-height:1.28;">
+            <b style="color:var(--ink);">Figure 3.</b> Precision&ndash;recall across confidence thresholds.
+          </div>
+          <div style="flex:2; font-size:16.5pt; color:var(--grey); line-height:1.28; padding-left:5mm; border-left:0.4mm solid var(--green-line);">
+            <b style="color:var(--ink);">Figure 4.</b> Real-time field data collected and labelled by me &mdash; video frames from a
+            campus rooftop array annotated with condition labels (dust, leaf, clean). These unseen frames were used to test the
+            trained detector under real deployment conditions.
+          </div>
+        </div>
+      </figure>
+
+      <div class="sec"><div class="num">7</div><h2>Limitations</h2></div>
+      <ul class="tight">
+        <li><b>Bird drop remains weak.</b> Very few validation examples and strong visual overlap with defect; targeted augmentation helped but did not close the gap.</li>
+        <li><b>Small validation split.</b> 383 images is thin for 6 classes; per-class confidence intervals are wide.</li>
+        <li><b>Adhered vs. loose dust is inferred</b> from appearance, not measured; deployment would add a wind/humidity check before choosing air over water.</li>
+        <li><b>Aerial RGB only.</b> Cracks under glare are harder to see; thermal or electroluminescence channels would catch sub-visual defects.</li>
+      </ul>
+
+      <div class="sec"><div class="num">8</div><h2>Conclusion and Future Work</h2></div>
+      <p>Four inconsistent public datasets became one audited 20,153-image benchmark, and an imbalance-aware YOLOv11s trained on it
+      recognises the conditions that actually drive cleaning decisions &mdash; 73.1% mAP@50, with 88.8% AP on clean and 78.2% on
+      dust &mdash; wired to an action policy an autonomous UAV or cleaning robot can execute. Next steps:</p>
+      <ul class="tight">
+        <li><b>Better minority-class data:</b> targeted bird-drop collection; larger validation split;</li>
+        <li><b>Loose-vs-adhered head:</b> a two-way classifier on the panel crop to make the air/water choice explicit;</li>
+        <li><b>Onboard deployment:</b> ONNX/TensorRT export and latency benchmarks on an embedded UAV computer;</li>
+        <li><b>Closed loop:</b> command a nozzle from the detector output; measure water and energy saved vs a fixed schedule.</li>
+      </ul>
+
+      <div class="sec"><div class="num">&#9679;</div><h2>References</h2></div>
+      <div class="refs">
+        <p>[1] K. K. Ilse et al. Air pollution and soiling implications for solar photovoltaic power generation: a comprehensive review. <i>Solar Energy</i>, 207, 2020.</p>
+        <p>[2] J. Terven, D. C&oacute;rdova-Esparza. A comprehensive review of YOLO architectures. <i>Machine Learning and Knowledge Extraction</i>, 5(4), 2023.</p>
+        <p>[3] G. Jocher et al. Ultralytics YOLO11. Ultralytics, 2024. docs.ultralytics.com</p>
+        <p>[4] A. Dosovitskiy et al. An image is worth 16&times;16 words. <i>ICLR</i>, 2021.</p>
+        <p>[5] Source datasets: Solar-Panel-Dust-Detection v2; Solar Panel Detection v3; 6rainstorm v1 (Roboflow); Aerial Soiling DS v2_14.</p>
+        <p>[6] C. Zauner. Implementation and benchmarking of perceptual image hash functions. 2010.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== ACKNOWLEDGEMENTS ===================== -->
+  <div style="text-align:center; font-size:13.5pt; color:var(--grey); margin-top:5mm;">
+    <b style="color:var(--green-head);">Acknowledgements.</b> I thank the Teaching Assistant, <b>Sourav Roy</b>, for his guidance and
+    support throughout this project, and the Department of Electrical Engineering, IIT Bhilai, for the facilities provided.
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <div class="footer">
+    <div class="mid">
+      <b>Ayush Kumar</b> &nbsp;&middot;&nbsp; ID 12340440 &nbsp;&middot;&nbsp; Supervisor: <b>Avishek Adhikary</b> &nbsp;&middot;&nbsp; Department of Electrical Engineering, IIT Bhilai
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
